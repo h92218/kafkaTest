@@ -6,6 +6,10 @@ producer 멱등성
 
 
 멱등성 보장에 필요한 속성
+- max.in.flight.requests.per.connection <= 5
+- retries > 0
+- acks = all(-1)
+  
 1. ACKS_CONFIG 
 프로듀서가 브로커에게 메시지를 보낸 후 받는 응답의 수준 
 - acks=0: 프로듀서가 브로커에게 메시지를 보내고, 응답 기다리지 않음. 메시지 손실 가능성 높음
