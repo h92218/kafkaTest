@@ -36,19 +36,19 @@ producer 멱등성
 메시지 전송 재시도 횟수. 0 이상으로 설정
 
 -------
-consumer offset과 autocommit 
+Consumer 유형
+1. 동기방식
+- 해당 메시지의 처리가 완료될 때까지 다음 메시지를 소비하지 않음.
+- 메세지 순차처리
+- 속도면에선 느리겠지만 손실은 거의 발생하지 않는 편
+- 중요한 데이터는 동기방식 좋음
+- 메세지 처리 후 consumer.commitSync()
+- poll메서드로 받은 가장 마지막 레코드를 기준으로 커밋함
 
 
 
+2. 비동기방식
+- 메세지 polling 한 후 메세지를 여러개의 스레드에서 병렬로 동시에 처리
+- 메세지 처리 후 consumer.commitAsync()
 
 
-
-
-3. consumer group 테스트
-1) offset이 있는 경우: 서비스가 재기동 되었을 때
-- auto.offset.reset 설정 적용 안함
-- 쌓여있는 offset 순차적으로 처리함
-2) offset이 없는 경우: consumer group이 새로 만들어 졌을 때
-- auto.offset.reset 설정 적용됨
-- earliest: 처음 offset 부터 구독
-- latest: 마지막 offset 다음 부터 구독
