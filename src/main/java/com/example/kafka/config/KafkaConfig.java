@@ -63,6 +63,7 @@ public class KafkaConfig {
 
         props.put("enable.auto.commit", false); // 주기적으로 offset을 commit (컨슈머 서비스가 정상적으로 처리되었을 때 커밋)
         props.put("auto.offset.reset", "earliest"); // 가장 초기의 offset 값으로 리밸런스
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG,10); //한 번의 poll로 가져올 최대 메세지 개수
 
         //The class '' is not in the trusted packages 오류 시 false로 해주면 됨
         //false 옵션 : 메세지 헤더의 패키지명이 포함되어있으므로 헤더를 검사하지 않음 
