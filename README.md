@@ -50,5 +50,11 @@ Consumer 유형
 2. 비동기방식
 - 메세지 polling 한 후 메세지를 여러개의 스레드에서 병렬로 동시에 처리
 - 메세지 처리 후 consumer.commitAsync()
+- 먼저 완료된 프로세스가 커밋한 오프셋이 8이라면 1~7까지는 처리된것으로 간주됨 
+
+
+
+
+참고) https://suchakjani.medium.com/kafka-asynchronous-consumers-69a774d18536
 
 
